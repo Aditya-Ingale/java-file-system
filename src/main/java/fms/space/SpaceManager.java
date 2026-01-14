@@ -7,4 +7,13 @@ public class SpaceManager{
 
     //stores IDs of free block for O(1) allocation
     private Queue<Interger> freeBlockIds;
+
+    public SpaceManager(int totalBlocks){
+        this.freeBlockIds = new LinkedList<>();
+
+        //initally, all blocks are free
+        for(int i = 0; i < totalBlocks; i++){
+            freeBlockIds.add(i);
+        }
+    }
 }
