@@ -15,4 +15,16 @@ public class StorageManager{
 
     //all blocks managed by the system
     private Map<Interger, Block> blocks;
+
+    public StorageManager(long totalMemory, int blockSize){
+        this.totalMemory = totalMemory;
+        this.blockSize = blockSize;
+        this.blocks = new Hasmap<>();
+
+        int totalBlocks = (int) (totalMemory / blockSize);
+
+        for(int i = 0; i < totalBlocks; i++){
+            blocks.put(i, new Block(i, blockSize));
+        }
+    }
 }
