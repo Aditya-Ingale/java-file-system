@@ -28,4 +28,8 @@ public class StorageManager{
             blocks.put(i, new Block(i, blockSize));
         }
     }
+
+    public int getBlockSize(){
+        return blockSize;
+    }
 }

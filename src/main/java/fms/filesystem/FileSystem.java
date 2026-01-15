@@ -3,6 +3,9 @@ package fms.filesystem;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fms.file.File;
 import fms.space.SpaceManager;
 import fms.storage.StorageManager;
@@ -50,6 +53,20 @@ public class FileSystem {
 
         if(!file.getPermission().canWrite()){
             throw new RuntimeException("Write permission denied: " + path);
+        }
+
+        int blockSize = storageManager.getBlockSize();
+        
+        int requiredBlocks = (int) Math.ceil((double) data.length / blockSize);
+
+        List<Integer> allocatedBlocks = new ArrayList<>();
+
+        for(int i = 0; i < requiredBlocks; i++){
+            Integer blockId = spaceManager.getFreeBlock();
+            if(blockId == null){
+                throw new RuntimeException("Out of memory");
+            }
+            allocatedBlocks.add(blockId);
         }
     }
 }

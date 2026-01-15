@@ -17,4 +17,8 @@ public class SpaceManager{
             freeBlockIds.add(i);
         }
     }
+
+    public Integer getFreeBlock(){
+        return freeBlockIds.poll();
+    }
 }
