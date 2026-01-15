@@ -90,7 +90,7 @@ public class FileSystem {
     public byte[] readFile(String path){
         File file = files.get(path);
         if(file == null){
-            throw new RuntimeException("File not Found: " + path); 
+            throw new RuntimeException("File not found: " + path);
         }
 
         if(!file.getPermission().canRead()){
@@ -103,7 +103,7 @@ public class FileSystem {
         for(Integer blockId : file.getBlockIds()){
             Block block = storageManager.getBlock(blockId);
 
-            int bytesToRead = Math.min(storageManager.getBlockSize()l, result.length - offset);
+            int bytesToRead = Math.min(storageManager.getBlockSize(), result.length - offset);
 
             System.arraycopy(block.getData(), 0, result, offset, bytesToRead);
             offset += bytesToRead;
