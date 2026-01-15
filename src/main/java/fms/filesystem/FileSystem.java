@@ -36,7 +36,7 @@ public class FileSystem {
     //extract file name from path(simple verison)
     String fileName = path;
 
-    File file = new File();
+    File file = new File(path, permission);
     //temporary: fields will be set next step
 
     files.put(path, file);

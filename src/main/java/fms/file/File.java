@@ -1,6 +1,7 @@
 package fms.file;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import fms.permission.Permission;
@@ -15,6 +16,15 @@ public class File{
 
     private Permission permission;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
+
+    public File(String name, Permission permission){
+        this.name = name;
+        this.permission = permission;
+        this.size = 0;
+        this.blockIds = new ArrayList<>();
+        this.createdAt = LocalDateTime.now();
+        this.lastModifiedAt = this.createdAt;
+    }
 }
