@@ -1,6 +1,7 @@
 package fms.storage;
 
-import java.util.map;
+import java.util.HashMap;
+import java.util.Map;
 
 import fms.block.Block;
 
@@ -14,12 +15,12 @@ public class StorageManager{
     private final int blockSize;
 
     //all blocks managed by the system
-    private Map<Interger, Block> blocks;
+    private Map<Integer, Block> blocks;
 
     public StorageManager(long totalMemory, int blockSize){
         this.totalMemory = totalMemory;
         this.blockSize = blockSize;
-        this.blocks = new Hasmap<>();
+        this.blocks = new HashMap<>();
 
         int totalBlocks = (int) (totalMemory / blockSize);
 
