@@ -1,12 +1,13 @@
 package fms.space;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class SpaceManager{
     //fields only
 
     //stores IDs of free block for O(1) allocation
-    private Queue<Interger> freeBlockIds;
+    private Queue<Integer> freeBlockIds;
 
     public SpaceManager(int totalBlocks){
         this.freeBlockIds = new LinkedList<>();
