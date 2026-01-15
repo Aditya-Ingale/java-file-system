@@ -11,7 +11,7 @@ public class File{
     private long size;
 
     //ordered list of blacks that make up the file
-    private List<Interger> blockIds;
+    private List<Integer> blockIds;
 
     private Permission permission;
 
