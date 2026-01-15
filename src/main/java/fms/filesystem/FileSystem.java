@@ -10,6 +10,7 @@ import fms.file.File;
 import fms.space.SpaceManager;
 import fms.storage.StorageManager;
 import fms.block.Block;
+import fms.permission.Permission;
 
 public class FileSystem {
     // fields only
@@ -132,5 +133,14 @@ public class FileSystem {
         }
 
         writeFile(path, data); //reuse append logic
+    }
+
+    public void changePermission(String path, fms.permission.Permission permission){
+        File file = files.get(path);
+        if(file == null){
+            throw new RuntimeException("File not found: " + path);
+        }
+
+        file.setPermission(permission);
     }
 }

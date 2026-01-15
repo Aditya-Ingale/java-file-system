@@ -44,4 +44,8 @@ public class File{
     public long getSize(){
         return size;
     }
+
+    public void setPermission(Permission permission){
+        this.permission = permission;
+    }
 }
