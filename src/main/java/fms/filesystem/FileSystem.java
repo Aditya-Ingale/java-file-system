@@ -27,4 +27,18 @@ public class FileSystem {
         int totalBlocks = (int) (TOTAL_MEMORY / BLOCK_SIZE);
         this.spaceManager = new SpaceManager(totalBlocks);
     }
+
+    public void createFile(String path, fms.permission.Permission permission){
+    if(files.containsKey(path)){
+        throw new RuntimeException("File already exixts: " + path);
+    }
+
+    //extract file name from path(simple verison)
+    String fileName = path;
+
+    File file = new File();
+    //temporary: fields will be set next step
+
+    files.put(path, file);
+}
 }
