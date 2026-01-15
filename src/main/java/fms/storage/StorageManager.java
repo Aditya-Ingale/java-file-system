@@ -32,4 +32,8 @@ public class StorageManager{
     public int getBlockSize(){
         return blockSize;
     }
+
+    public Block getBlock(int blockId){
+        return blocks.get(blockId);
+    }
 }

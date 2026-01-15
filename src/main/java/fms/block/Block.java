@@ -11,4 +11,9 @@ public class Block {
         this.data = new byte[blockSize];
         this.isFree = true;
     }
+
+    public void write(byte[] src, int offset, int length){
+        System.arraycopy(src, offset, this.data, 0, length);
+        this.isFree = false;
+    }
 }

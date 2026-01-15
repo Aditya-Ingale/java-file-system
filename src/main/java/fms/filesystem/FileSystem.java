@@ -9,6 +9,7 @@ import java.util.List;
 import fms.file.File;
 import fms.space.SpaceManager;
 import fms.storage.StorageManager;
+import fms.block.Block;
 
 public class FileSystem {
     // fields only
@@ -33,7 +34,7 @@ public class FileSystem {
 
     public void createFile(String path, fms.permission.Permission permission){
     if(files.containsKey(path)){
-        throw new RuntimeException("File already exixts: " + path);
+        throw new RuntimeException("File already exists: " + path);
     }
 
     //extract file name from path(simple verison)
@@ -68,5 +69,21 @@ public class FileSystem {
             }
             allocatedBlocks.add(blockId);
         }
+
+        int offset = 0;
+
+        for(Integer blockId : allocatedBlocks){
+            Block block = storageManager.getBlock(blockId);
+
+            int bytesToWrite = Math.min(blockSize, data.length - offset);
+
+            block.write(data, offset, bytesToWrite);
+
+            file.getBlockIds().add(blockId);
+
+            offset += bytesToWrite;
+        }
+
+        file.updateSize(data.length);
     }
 }
