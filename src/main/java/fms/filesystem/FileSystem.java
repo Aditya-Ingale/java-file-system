@@ -42,4 +42,14 @@ public class FileSystem {
     files.put(path, file);
     }
     
+    public void writeFile(String path, byte[] data){
+        File file = files.get(path);
+        if(file == null){
+            throw new RuntimeException("File not found: " + path);
+        }
+
+        if(!file.getPermission().canWrite()){
+            throw new RuntimeException("Write permission denied: " + path);
+        }
+    }
 }

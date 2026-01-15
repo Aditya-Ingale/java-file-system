@@ -27,4 +27,17 @@ public class File{
         this.createdAt = LocalDateTime.now();
         this.lastModifiedAt = this.createdAt;
     }
+
+    public Permission getPermission(){
+        return permission;
+    }
+
+    public List<Integer> getBlockIds(){
+        return blockIds;
+    }
+
+    public void updateSize(long delta){
+        this.size += delta;
+        this.lastModifiedAt = java.time.LocalDateTime.now();
+    }
 }
