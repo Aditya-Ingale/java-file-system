@@ -86,4 +86,28 @@ public class FileSystem {
 
         file.updateSize(data.length);
     }
+
+    public byte[] readFile(String path){
+        File file = files.get(path);
+        if(file == null){
+            throw new RuntimeException("File not Found: " + path); 
+        }
+
+        if(!file.getPermission().canRead()){
+            throw new RuntimeException("Read permission denied: " + path);
+        }
+
+        byte[] result = new byte[(int) file.getSize()];
+        int offset = 0;
+
+        for(Integer blockId : file.getBlockIds()){
+            Block block = storageManager.getBlock(blockId);
+
+            int bytesToRead = Math.min(storageManager.getBlockSize()l, result.length - offset);
+
+            System.arraycopy(block.getData(), 0, result, offset, bytesToRead);
+            offset += bytesToRead;
+        }
+        return result;
+    }
 }

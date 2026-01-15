@@ -40,4 +40,8 @@ public class File{
         this.size += delta;
         this.lastModifiedAt = java.time.LocalDateTime.now();
     }
+
+    public long getSize(){
+        return size;
+    }
 }
