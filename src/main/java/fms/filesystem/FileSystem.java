@@ -114,7 +114,7 @@ public class FileSystem {
     public void deleteFile(String path){
         File file = files.get(path);
         if(file == null){
-            throw new RuntimeException("File not found: " + path)
+            throw new RuntimeException("File not found: " + path);
         }
 
         for(Integer blockId : file.getBlockIds()){
@@ -122,5 +122,15 @@ public class FileSystem {
             spaceManager.releaseBlock(blockId);
         }
         files.remove(path);
+    }
+
+    public void writeFile(String path, byte[] data, WriteMode mode){
+        
+        if(mode == WriteMode.OVERWRITE){
+            deleteFile(path);
+            createFile(path, new Permission(true, true, false));
+        }
+
+        writeFile(path, data); //reuse append logic
     }
 }
