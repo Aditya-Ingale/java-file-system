@@ -17,8 +17,8 @@ public class FileSystem {
 
     public FileSystem(){
         // system-wide constant
-        long TOTAL_MEMORY = 20L * 1024 * 1024; //20 MB
-        int BLOCK_SIZE = 1024;
+        long TOTAL_MEMORY = 20L * 1024 * 1024;  // 20 MB
+        int BLOCK_SIZE = 1024;                      // 1 KB
 
         this.files = new HashMap<>();
 
