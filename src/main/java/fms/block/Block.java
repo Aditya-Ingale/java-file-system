@@ -16,4 +16,12 @@ public class Block {
         System.arraycopy(src, offset, this.data, 0, length);
         this.isFree = false;
     }
+
+    public byte[] getData(){
+        return data;
+    }
+    
+    public void clear(){
+        this.isFree = true;
+    }
 }

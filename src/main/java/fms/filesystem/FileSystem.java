@@ -110,4 +110,17 @@ public class FileSystem {
         }
         return result;
     }
+
+    public void deleteFile(String path){
+        File file = files.get(path);
+        if(file == null){
+            throw new RuntimeException("File not found: " + path)
+        }
+
+        for(Integer blockId : file.getBlockIds()){
+            storageManager.freeBlock(blockId);
+            spaceManager.releaseBlock(blockId);
+        }
+        files.remove(path);
+    }
 }

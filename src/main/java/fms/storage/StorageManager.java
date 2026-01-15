@@ -36,4 +36,13 @@ public class StorageManager{
     public Block getBlock(int blockId){
         return blocks.get(blockId);
     }
+
+    public void freeBlock(int blockId){
+        Block block = blocks.get(blockId);
+        block.clear();
+    }
+
+    public void releaseBlock(int blockId){
+        freeBlockIds.add(blockId);
+    }
 }
